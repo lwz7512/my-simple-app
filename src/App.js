@@ -16,9 +16,9 @@ export class App extends Component {
     return (
       <div>
 
-        <h1>{this.props.geod.title || 'Hello World!'}</h1>
+        <h1>{this.props.geodP.title || 'Hello World!'}</h1>
 
-        {this.props.geod.title ?
+        {this.props.geodP.title ?
           <button onClick={this.props.closeGeod}>
             Exit Geod
           </button> :
@@ -34,9 +34,16 @@ export class App extends Component {
 }
 
 // AppContainer.js
-const mapStateToProps = (state, ownProps) => ({
-  geod: state.geod,
-});
+// reducer -> state -> props
+const mapStateToProps = (state, ownProps) => {
+  console.log(state);
+  // set geodP used in template above
+  return {geodP: state.geodR};
+};
+// original version:
+// const mapStateToProps = (state, ownProps) => ({
+//   geod: state.geod,
+// });
 
 const mapDispatchToProps = {
   activateGeod,
